@@ -155,6 +155,17 @@
 			</plugin>
 		</plugins>
 	</build>
+	<build>
+  <pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.0.2155</version>
+      </plugin>
+    </plugins>
+  </pluginManagement>
+</build>
 	<version>1.8-SNAPSHOT</version>
 	<name>Spring3HibernateApp</name>
 	<url>http://maven.apache.org</url>
