@@ -10,16 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
 - task: SonarQubePrepare@4
   inputs:
     SonarQube: 'azuredev-sonar3'
@@ -29,3 +19,16 @@ steps:
         -Dsonar.projectKey=azuredevops \
         -Dsonar.host.url=http://40.71.250.185:9000 \
         -Dsonar.login=534e2f1572240a38e8d1e3fc046c5d93c1e32aa2
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    codeCoverageToolOption: 'JaCoCo'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: true
+    isJacocoCoverageReportXML: true
+    sqMavenPluginVersionChoice: 'latest'
