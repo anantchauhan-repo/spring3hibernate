@@ -32,3 +32,10 @@ steps:
     sonarQubeRunAnalysis: true
     isJacocoCoverageReportXML: true
     sqMavenPluginVersionChoice: 'latest'
+    checkStyleRunAnalysis: true
+    pmdRunAnalysis: true
+    findBugsRunAnalysis: true
+    
+- task: SonarQubePublish@4
+  inputs:
+    pollingTimeoutSec: '300'
